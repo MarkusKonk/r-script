@@ -3,7 +3,8 @@ var _ = require("underscore"),
 
 function init(path) {
   var obj = new R(path);
-  return _.bindAll(obj, "data", "call", "callSync");
+  _.bindAll(obj, "data", "call", "callSync");
+  return obj;
 }
 
 function R(path) {
@@ -35,7 +36,7 @@ R.prototype.call = function(_opts, _callback) {
      body += d;
   });
   child.on("close", function(code) {
-    callback(null, JSON.parse(body));
+    callback(null, null);
   });
 };
 
